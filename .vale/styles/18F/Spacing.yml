@@ -5,13 +5,14 @@ link: https://content-guide.18f.gov/punctuation/#spaces
 level: error
 nonword: true
 tokens:
+  # 1. Catch 2+ spaces after punctuation
   - '[.?!] {2,}[A-Z]'
-  - '(?<!\[)!?[A-Z]'
-  - '[.?!][A-Z]'
-# Exceptions being made for GFM alerts
-exceptions:
-  - '!W' # Matches start of !WARNING
-  - '!N' # Matches start of !NOTE
-  - '!T' # Matches start of !TIP
-  - '!I' # Matches start of !IMPORTANT
-  - '!C' # Matches start of !CAUTION
+
+  # 2. Catch 0 spaces after . ? or !
+  # Logic: Match a mark, followed immediately by a Capital,
+  # UNLESS that capital is part of a GFM Alert keyword.
+  - '[.?!](?!(NOTE|WARNING|TIP|IMPORTANT|CAUTION))[A-Z]'
+
+  # 3. Catch !Letter (standard GFM shorthand) while ignoring the tags
+  # Logic: Match '!' NOT preceded by '[' AND NOT followed by a GFM keyword
+  - '(?<!\[)!(?!(NOTE|WARNING|TIP|IMPORTANT|CAUTION))[A-Z]'
