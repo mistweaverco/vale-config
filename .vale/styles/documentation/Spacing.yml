@@ -8,9 +8,10 @@ tokens:
   - '[.?!] {2,}[A-Z]'
   - '(?<!\[)!?[A-Z]'
   - '[.?!][A-Z]'
+# Exceptions being made for GFM alerts
 exceptions:
-  - '!WARNING'
-  - '!NOTE'
-  - '!TIP'
-  - '!IMPORTANT'
-  - '!CAUTION'
+  - '!W' # Matches start of !WARNING
+  - '!N' # Matches start of !NOTE
+  - '!T' # Matches start of !TIP
+  - '!I' # Matches start of !IMPORTANT
+  - '!C' # Matches start of !CAUTION
