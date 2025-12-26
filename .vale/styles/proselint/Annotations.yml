@@ -6,4 +6,5 @@ tokens:
   - XXX
   - FIXME
   - TODO
-  - NOTE
+# Matches 'NOTE' only if NOT preceded by '[!' (GFM Alert syntax)
+  - '(?<!\[!)NOTE'
