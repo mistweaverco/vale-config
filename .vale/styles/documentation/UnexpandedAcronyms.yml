@@ -6,6 +6,12 @@ level: warning
 first: '\b([A-Z]{3,5})\b'
 second: '(?:\b[A-Z][a-z]+['']? )+\(([A-Z]{3,5})\)'
 exceptions:
+  # Github flavored exceptions
+  - NOTE
+  - WARNING
+  - TIP
+  - IMPORTANT
+  - CAUTION
   - ABI
   - ACM
   - ADC
